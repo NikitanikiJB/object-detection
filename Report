@@ -1,0 +1,91 @@
+
+**Objective**: The objective of this project is to segment a video into four categories based on scenes and the presence of people:
+1. Indoor scenes
+2. Outdoor scenes
+3. Scenes with people present
+4. Scenes without people present
+
+**Tools and Libraries Used**:
+- **Azure Cognitive Services**: For scene classification and object detection.
+- **OpenCV**: For video processing and frame extraction.
+- **MoviePy**: For video segmentation and clip creation.
+- **Streamlit**: For creating a user-friendly interface to upload videos and display results.
+
+**Steps**:
+
+1. **Set up Azure Cognitive Services**:
+   - Created a Cognitive Services resource on Azure.
+   - Obtained the subscription key and endpoint URL for the Azure Computer Vision API.
+
+2. **Scene Detection**:
+   - **Frame Extraction**: Used OpenCV to extract frames from the video at regular intervals.
+   - **Scene Classification**: Sent each frame to the Azure Computer Vision API to classify it as an indoor or outdoor scene.
+   - **People Detection**: Used the same API to detect the presence of people in each frame.
+
+3. **Video Segmentation**:
+   - **Categorization**: Based on the analysis, categorized frames into one of the four categories (indoor, outdoor, people present, people not present).
+   - **Clip Creation**: Used MoviePy to create video clips for each category by combining the frames belonging to that category.
+
+4. **Streamlit UI**:
+   - Developed a Streamlit application to allow users to upload videos.
+   - The application processes the uploaded video and displays the segmented clips in the four categories.
+
+### Challenges Faced
+
+1. **Integration with Azure Cognitive Services**:
+   - **Challenge**: Ensuring that the API requests were correctly formatted and handled, especially given the rate limits and potential errors in API calls.
+   - **Solution**: Implemented robust error handling and retry mechanisms. Used batch processing of frames to reduce the number of API calls.
+
+2. **Performance**:
+   - **Challenge**: Processing video frames can be slow, especially for longer videos, leading to high computational costs and longer processing times.
+   - **Solution**: Optimized the processing pipeline by analyzing key frames instead of every frame. This significantly reduced the number of frames to be processed.
+
+3. **Accuracy**:
+   - **Challenge**: Ensuring that the scene classification and people detection were accurate. Misclassifications could lead to incorrect segmentation.
+   - **Solution**: Refined the segmentation logic by incorporating additional heuristics and post-processing steps to improve accuracy.
+
+4. **Resource Management**:
+   - **Challenge**: Handling large videos required substantial memory and computational resources.
+   - **Solution**: Used efficient memory management techniques and optimized the video processing pipeline to minimize resource usage.
+
+### Solutions Implemented
+
+1. **Optimized API Calls**:
+   - Implemented batch processing of frames to reduce the number of API calls.
+   - Used a combination of key frame extraction and scene change detection to minimize redundant processing.
+
+2. **Improved Segmentation Logic**:
+   - Refined the logic for segmenting video based on the classification results.
+   - Incorporated additional heuristics to handle edge cases and improve segmentation accuracy.
+
+3. **Enhanced User Interface**:
+   - Developed a user-friendly Streamlit application to allow users to upload videos and view segmented clips.
+   - Provided clear instructions and feedback to guide users through the process.
+
+### Potential Improvements
+
+1. **Batch Processing**:
+   - Implement batch processing of frames to improve performance further.
+   - Use parallel processing techniques to speed up the analysis.
+
+2. **Advanced Classification Models**:
+   - Explore more advanced models for scene classification and people detection, such as deep learning-based models.
+   - Incorporate models trained on larger and more diverse datasets to improve accuracy.
+
+3. **Enhanced UI Features**:
+   - Add more features to the Streamlit application, such as the ability to download segmented clips.
+   - Provide more detailed analytics and visualizations of the segmentation results.
+
+4. **Scalability**:
+   - Implement scalable solutions for processing large videos, such as using cloud-based processing and storage.
+   - Optimize the code to handle videos of different formats and resolutions efficiently.
+
+5. **Error Handling and Logging**:
+   - Enhance error handling and logging mechanisms to provide better insights into the processing pipeline.
+   - Implement detailed logging to track the performance and accuracy of the segmentation.
+
+By addressing these potential improvements, the project can be made more robust, accurate, and user-friendly, providing a better experience for users and ensuring more reliable results.
+
+---
+
+This report can be saved as `REPORT.md` or included in your main `README.md` file in your GitHub repository.
