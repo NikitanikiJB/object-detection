@@ -27,10 +27,6 @@ The segmentation is performed using Azure Cognitive Services for scene classific
     pip install -r requirements.txt
     ```
 
-3. **Set up Azure Cognitive Services**:
-    - Create an Azure Cognitive Services resource and get the subscription key and endpoint URL.
-    - Update `scene_detection.py` with your Azure subscription key and endpoint.
-
 ## Usage
 
 1. **Running the Streamlit application**:
