@@ -1,7 +1,13 @@
-azure-cognitiveservices-vision-computervision
-opencv-python-headless
-moviepy
 streamlit
-numpy
+pandas
 requests
+opencv-python
+numpy
+matplotlib
 Pillow
+scikit-image
+tensorflow
+torch
+torchvision
+scipy
+
