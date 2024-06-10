@@ -2,7 +2,7 @@ import cv2
 import os
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
-# Load scene detection results
+
 def load_scene_detection_results(file_path):
     results = []
     with open(file_path, 'r') as f:
@@ -11,7 +11,6 @@ def load_scene_detection_results(file_path):
             results.append((int(frame_id), scene_type, people_present == 'True'))
     return results
 
-# Segment video
 def segment_video(video_path, results):
     cap = cv2.VideoCapture(video_path)
     frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
@@ -37,12 +36,11 @@ def segment_video(video_path, results):
     prev_people_present = None
 
 
-# Process the segments as needed
 
 
     for frame_id, scene_type, people_present in results:
         if prev_scene is not None:
-            if frame_id - prev_frame_id > frame_rate * 30:  # If the gap between frames is large, close the previous segment
+            if frame_id - prev_frame_id > frame_rate * 30:  
                 write_segment(prev_frame_id, frame_id, prev_scene)
                 if prev_people_present:
                     write_segment(prev_frame_id, frame_id, 'people_present')
@@ -59,7 +57,7 @@ def segment_video(video_path, results):
             prev_scene = scene_type
             prev_people_present = people_present
 
-    # Write the last segment
+
     if prev_scene is not None:
         write_segment(prev_frame_id, frame_id, prev_scene)
         if prev_people_present:
