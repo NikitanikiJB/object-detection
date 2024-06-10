@@ -4,8 +4,8 @@ import os
 import numpy as np
 
 # Azure Computer Vision API setup
-subscription_key = 'YOUR_AZURE_SUBSCRIPTION_KEY'
-endpoint = 'YOUR_AZURE_ENDPOINT_URL'
+subscription_key = '69f459252861417ba53a09764e99d07a'
+endpoint = 'https://cv-project3.cognitiveservices.azure.com/'
 analyze_url = endpoint + "vision/v3.1/analyze"
 
 # Frame extraction function
@@ -30,11 +30,16 @@ def classify_frame(frame):
                'Content-Type': 'application/octet-stream'}
     _, img_encoded = cv2.imencode('.jpg', frame)
     response = requests.post(analyze_url, headers=headers, data=img_encoded.tobytes())
-    response.raise_for_status()
-    analysis = response.json()
-    indoor_outdoor = 'indoor' if 'indoor' in analysis['tags'] else 'outdoor'
-    people_present = any('person' in obj['object'] for obj in analysis['objects'])
-    return indoor_outdoor, people_present
+    
+    try:
+        response.raise_for_status()
+        analysis = response.json()
+        indoor_outdoor = 'indoor' if 'indoor' in analysis.get('tags', []) else 'outdoor'
+        people_present = any('person' in obj.get('object', '') for obj in analysis.get('objects', []))
+        return indoor_outdoor, people_present
+    except Exception as e:
+        print(f"Error processing frame: {e}")
+        return None, None
 
 # Main function
 def detect_scenes(video_path):
