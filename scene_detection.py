@@ -3,12 +3,11 @@ import requests
 import os
 import numpy as np
 
-# Azure Computer Vision API setup
+
 subscription_key = '69f459252861417ba53a09764e99d07a'
 endpoint = 'https://cv-project3.cognitiveservices.azure.com/'
-analyze_url = endpoint + "vision/v3.1/analyze"
 
-# Frame extraction function
+
 def extract_frames(video_path, interval=30):
     cap = cv2.VideoCapture(video_path)
     frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
@@ -24,7 +23,6 @@ def extract_frames(video_path, interval=30):
     cap.release()
     return frames
 
-# Scene classification function
 def classify_frame(frame):
     headers = {'Ocp-Apim-Subscription-Key': subscription_key,
                'Content-Type': 'application/octet-stream'}
@@ -41,7 +39,6 @@ def classify_frame(frame):
         print(f"Error processing frame: {e}")
         return None, None
 
-# Main function
 def detect_scenes(video_path):
     frames = extract_frames(video_path)
     results = []
