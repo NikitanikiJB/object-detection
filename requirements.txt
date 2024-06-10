@@ -1,0 +1,7 @@
+azure-cognitiveservices-vision-computervision
+opencv-python-headless
+moviepy
+streamlit
+numpy
+requests
+Pillow
