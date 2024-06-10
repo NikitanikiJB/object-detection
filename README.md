@@ -18,8 +18,8 @@ The segmentation is performed using Azure Cognitive Services for scene classific
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-repo/video-segmentation.git
-    cd video-segmentation
+    git clone https://github.com/NikitanikiJB/object-detection.git
+    cd object-detection
     ```
 
 2. **Install dependencies**:
@@ -41,8 +41,9 @@ The segmentation is performed using Azure Cognitive Services for scene classific
 
 ## File Structure
 
-- `scene_detection.py`: Contains the logic for scene detection and video segmentation.
+- `scene_detection.py`: Contains the logic for scene detection.
 - `app.py`: Streamlit application for uploading videos and displaying results.
 - `requirements.txt`: List of required Python libraries.
+- `scene_detection.py`: Contains the logic for video segmentation.
 
 
