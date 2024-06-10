@@ -36,6 +36,10 @@ def segment_video(video_path, results):
     prev_scene = None
     prev_people_present = None
 
+
+# Process the segments as needed
+
+
     for frame_id, scene_type, people_present in results:
         if prev_scene is not None:
             if frame_id - prev_frame_id > frame_rate * 30:  # If the gap between frames is large, close the previous segment
