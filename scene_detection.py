@@ -4,8 +4,8 @@ import os
 import numpy as np
 
 
-subscription_key = '69f459252861417ba53a09764e99d07a'
-endpoint = 'https://cv-project3.cognitiveservices.azure.com/'
+subscription_key = ''
+endpoint = ''
 
 
 def extract_frames(video_path, interval=30):
